@@ -8,5 +8,5 @@ langchain-anthropic>=0.2.0
 langchain-openai>=0.2.0
 openai>=1.40
 python-dotenv>=1.0
-passlib[bcrypt]>=1.7
+bcrypt>=4.0
 python-jose[cryptography]>=3.3
