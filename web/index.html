@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crucible — GenAI interview practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/web/style.css" />
+</head>
+<body>
+<main class="stage">
+
+  <!-- ───────────────────────── SETUP ───────────────────────── -->
+  <section id="setup" class="view setup">
+    <div class="setup-head">
+      <p class="eyebrow">Voice interview practice</p>
+      <h1 class="wordmark">Crucible</h1>
+      <p class="tagline">A 20-year veteran. Warm. Relentless. Yours to practice against.</p>
+    </div>
+
+    <div class="card">
+      <label class="field">
+        <span class="field-label">Role you're interviewing for</span>
+        <input id="role" type="text" value="Generative AI Engineer" />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Job description <span class="field-optional">(optional — paste to tailor the interview)</span></span>
+        <textarea id="jd" rows="5" placeholder="Paste the job description here…"></textarea>
+      </label>
+
+      <div class="field">
+        <span class="field-label">Focus areas</span>
+        <div id="focus" class="chips" role="group" aria-label="Focus areas">
+          <button class="chip" data-on="true">RAG &amp; retrieval</button>
+          <button class="chip" data-on="true">Agents &amp; orchestration</button>
+          <button class="chip" data-on="true">Evaluation &amp; rigor</button>
+          <button class="chip">Fine-tuning &amp; LoRA</button>
+          <button class="chip">Inference cost &amp; latency</button>
+          <button class="chip">LLMOps &amp; deployment</button>
+          <button class="chip">Safety &amp; guardrails</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <span class="field-label">Your interviewer</span>
+          <div class="segmented" id="gender">
+            <button data-val="female" class="on">Anjali</button>
+            <button data-val="male">Arjun</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="field-label">How hard should she press?</span>
+          <div class="segmented" id="difficulty">
+            <button data-val="easy">Gentle</button>
+            <button data-val="standard" class="on">Standard</button>
+            <button data-val="hard">Hard</button>
+            <button data-val="brutal">Brutal</button>
+          </div>
+        </div>
+      </div>
+
+      <button id="begin" class="primary">Begin interview</button>
+      <p id="setup-status" class="status-line"></p>
+    </div>
+
+    <a class="ghost-link" id="show-history" href="#">Past interviews</a>
+  </section>
+
+  <!-- ───────────────────────── ROOM ───────────────────────── -->
+  <section id="room" class="view room hidden">
+    <header class="room-head">
+      <div class="who">
+        <span id="phase-tag" class="phase-tag">intro</span>
+        <h2 id="interviewer-name" class="interviewer-name">Anjali Mehta</h2>
+        <p class="interviewer-sub">VP, Generative AI</p>
+      </div>
+      <button id="end" class="end-btn">End &amp; get feedback</button>
+    </header>
+
+    <div class="orb-wrap">
+      <div id="orb" class="orb idle">
+        <div class="orb-ring r1"></div>
+        <div class="orb-ring r2"></div>
+        <div class="orb-core"></div>
+      </div>
+      <p id="orb-status" class="orb-status">Connecting…</p>
+    </div>
+
+    <div id="log" class="log" aria-live="polite"></div>
+
+    <!-- Coding exercise panel — shown when interviewer assigns a problem -->
+    <div id="coding-panel" class="coding-panel hidden">
+      <div class="coding-header">
+        <span class="coding-badge">Coding Exercise</span>
+        <span class="coding-hint">Write Python · Run to test · Submit when ready</span>
+      </div>
+      <p id="coding-problem" class="coding-problem"></p>
+      <textarea id="code-editor" class="code-editor" spellcheck="false" placeholder="# Write your Python solution here&#10;"></textarea>
+      <pre id="code-output" class="code-output hidden"></pre>
+      <div class="coding-actions">
+        <button id="run-code" class="mini">&#9654; Run</button>
+        <button id="submit-code" class="primary coding-submit">Submit code</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="talk" class="talk" disabled>
+        <span class="talk-dot"></span>
+        <span id="talk-label">Hold to answer</span>
+      </button>
+      <button id="replay" class="mini" title="Replay the question">Replay</button>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── REPORT ───────────────────────── -->
+  <section id="report" class="view report hidden">
+    <div class="report-head">
+      <span id="rec-badge" class="rec-badge">—</span>
+      <h2 id="headline" class="headline"></h2>
+    </div>
+    <div id="report-body"></div>
+    <button id="restart" class="primary">New interview</button>
+  </section>
+
+</main>
+
+<audio id="player"></audio>
+<script src="/web/app.js"></script>
+</body>
+</html>

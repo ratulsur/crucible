@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crucible — Sign in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/web/style.css" />
+</head>
+<body>
+<main class="stage auth-stage">
+  <div class="auth-head">
+    <p class="eyebrow">Interview practice</p>
+    <h1 class="wordmark">Crucible</h1>
+    <p class="tagline">A 20-year veteran. Warm. Relentless. Yours to practice against.</p>
+  </div>
+
+  <div class="card auth-card">
+    <div class="segmented auth-tabs" id="tabs">
+      <button data-tab="login" class="on">Sign in</button>
+      <button data-tab="register">Create account</button>
+    </div>
+
+    <div id="pane-login">
+      <div class="field">
+        <label class="field-label" for="login-username">Username</label>
+        <input id="login-username" type="text" placeholder="your username" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="login-password">Password</label>
+        <input id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+      <button id="btn-login" class="primary">Sign in</button>
+    </div>
+
+    <div id="pane-register" class="hidden">
+      <div class="field">
+        <label class="field-label" for="reg-username">Username</label>
+        <input id="reg-username" type="text" placeholder="choose a username" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label class="field-label" for="reg-password">Password</label>
+        <input id="reg-password" type="password" placeholder="at least 6 characters" autocomplete="new-password" />
+      </div>
+      <button id="btn-register" class="primary">Create account</button>
+    </div>
+
+    <p id="auth-error" class="status-line error hidden"></p>
+  </div>
+</main>
+<script src="/web/login.js"></script>
+</body>
+</html>
