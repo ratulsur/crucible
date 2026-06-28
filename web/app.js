@@ -308,18 +308,19 @@ async function begin() {
   btn.disabled = true;
   $("setup-status").className = "status-line";
   $("setup-status").textContent = "Setting up the room…";
+  const setup = readSetup();
   try {
     const res = await api("/api/session/start", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(readSetup()),
+      body: JSON.stringify(setup),
     });
     if (!res.ok) throw new Error((await res.json()).detail || "start failed");
     const data = await res.json();
     state.sessionId = data.session_id;
     state.voice = data.voice;
     $("interviewer-name").textContent =
-      $("gender").querySelector("button.on").dataset.val === "female" ? "Anjali Mehta" : "Arjun Rao";
+      setup.persona_gender === "female" ? "Anjali Mehta" : "Arjun Rao";
     $("phase-tag").textContent = data.phase;
     show("room");
     setTalkLabel("Tap to answer");
